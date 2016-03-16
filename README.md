@@ -1,5 +1,35 @@
 ## 百度ife春季训练营（i can fly）团队
 
+
+## 说明：
+### 自动化构建
+* 目前选用gulp作为构建工具,请在目录下运行
+```
+npm install
+gulp dev
+```
+目前选用插件
+* connect（自动刷新）
+* del（文件删除）
+* gulp-livereload（自动刷新页面）
+* gulp-plumber（错误处理）  
+* gulp-uglify（js压缩、混淆）
+* gulp-less（less编译）
+* gulp-csso（css压缩）
+* gulp-autoprefixer（css属性浏览器前缀添加）
+* gulp-file-include（文件包含）
+* webpack-stream（webpack流处理）
+
+### 代码处理
+#### CSS
+* 采用LESS进行预处理
+* [引入百度EST的LESS mixin库（点击查看文档）](https://github.com/ecomfe/est/blob/dev/doc/api.md) 
+
+#### JS
+* 采用webpack进行JS打包处理
+* 功能模块放在static/js/modules,页面模块放到static/js/pages
+
+
 ### 任务
 * [任务一：面向零基础的HTML代码编写](https://github.com/fe-icanfly/task1)
 * [任务二：基于任务1的HTML代码，实现简单的CSS代码编写](https://github.com/fe-icanfly/task2)

@@ -113,6 +113,7 @@ gulp.task('viewsBuild', function() {
         .pipe(plumber())
         .pipe(fileinclude({
             prefix: '@@',
+            basepath: '@file'
         }))
         .pipe(gulp.dest(BUILDDIR + '/views'));
 });
@@ -166,7 +167,7 @@ gulp.task('pagesBuild_dev', function() {
     gulp.src('static/js/**/*.js')
         .pipe(plumber())
         .pipe(webpack(webpackConfig))
-        .pipe(gulp.dest('./'+BUILDDIR+'/js'))
+        .pipe(gulp.dest('./'+BUILDDIR+'/js/pages'))
 });
 gulp.task('jsBuild', function() {
     gulp.start(['pagesBuild', 'libBuild']);

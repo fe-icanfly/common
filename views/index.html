@@ -1,8 +1,5 @@
-@@include('layout/head.html')
-
-<body>
-    <h1><center>Hello World</center></h1>
-    @@include('layout/footer.html')
-</body>
-
-</html>
+@@include('layout/head.html',{
+	"cssHref" : "/css/index.css"
+})
+<h1><center>Hello World</center></h1> 
+@@include('layout/footer.html')
