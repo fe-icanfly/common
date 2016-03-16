@@ -12,6 +12,7 @@ var uglify = require('gulp-uglify'), //js压缩
     less = require('gulp-less'), //less编译
     csso = require('gulp-csso'), //css压缩
     autoprefixer = require('gulp-autoprefixer'), //浏览器前缀添加
+    fileinclude = require('gulp-file-include'), //文件包含
     livereload = require('gulp-livereload'); //自动刷新页面
 var webpack = require('webpack-stream');
 var webpackConfig = require('./webpack.config');
@@ -110,6 +111,9 @@ gulp.task('watch', function() {
 gulp.task('viewsBuild', function() {
     return gulp.src('views/**/*.html')
         .pipe(plumber())
+        .pipe(fileinclude({
+            prefix: '@@',
+        }))
         .pipe(gulp.dest(BUILDDIR + '/views'));
 });
 gulp.task('viewsBuild_pro', function() {
@@ -162,8 +166,7 @@ gulp.task('pagesBuild_dev', function() {
     gulp.src('static/js/**/*.js')
         .pipe(plumber())
         .pipe(webpack(webpackConfig))
-        // .pipe(uglify())
-        .pipe(gulp.dest(BUILDDIR + '/js'))
+        .pipe(gulp.dest('./'+BUILDDIR+'/js'))
 });
 gulp.task('jsBuild', function() {
     gulp.start(['pagesBuild', 'libBuild']);
