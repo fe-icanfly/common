@@ -1,5 +1,20 @@
 ## 百度ife春季训练营（i can fly）团队
 
+```javascript
+//基础设施==
+var gulp = require('gulp'),
+    plumber = require('gulp-plumber');
+var uglify = require('gulp-uglify'), //js压缩
+    webpack = require('webpack-stream'), //webpack打包加入gulp流处理
+    webpackConfig = require('./webpack.config');
+gulp.task("pagesBuild", function() {
+    gulp.src('static/js/**/*.js')
+        .pipe(plumber())//错误信息处理
+        .pipe(webpack(webpackConfig))//采用webpack的形式打包，后面会讲到
+        .pipe(uglify())//JS压缩混淆
+        .pipe(gulp.dest(BUILDDIR + '/js'))//输出的构建目录
+});
+```
 
 ## 说明：
 ### 自动化构建
